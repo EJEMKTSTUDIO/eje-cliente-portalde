@@ -17,23 +17,30 @@ function formatRoas(value) {
   return Number(value).toFixed(2) + 'x';
 }
 
+function formatPeriodo(mes, anio) {
+  if (mes == null || anio == null) return 'Último período';
+  return `${mes}/${anio}`;
+}
+
 function getEcommerceCards(records) {
   const latest = records[0] || {};
+  const desc = formatPeriodo(latest.mes, latest.anio);
   return [
-    { label: 'Inversión Meta', valor: formatCurrency(latest.inversion_meta), desc: latest.periodo || 'Último período' },
-    { label: 'Facturación atribuida Meta', valor: formatCurrency(latest.facturacion_atribuida_meta), desc: latest.periodo || 'Último período' },
-    { label: 'Facturación total sitio', valor: formatCurrency(latest.facturacion_total_sitio), desc: latest.periodo || 'Último período' },
-    { label: 'ROAS', valor: formatRoas(latest.roas), desc: latest.periodo || 'Último período' },
+    { label: 'Inversión Meta', valor: formatCurrency(latest.inversion_meta), desc },
+    { label: 'Facturación atribuida Meta', valor: formatCurrency(latest.facturacion_atribuida_meta), desc },
+    { label: 'Facturación total sitio', valor: formatCurrency(latest.facturacion_total_sitio), desc },
+    { label: 'ROAS', valor: formatRoas(latest.roas), desc },
   ];
 }
 
 function getLeadGenCards(records) {
   const latest = records[0] || {};
+  const desc = formatPeriodo(latest.mes, latest.anio);
   return [
-    { label: 'Inversión Meta', valor: formatCurrency(latest.inversion_meta), desc: latest.periodo || 'Último período' },
-    { label: 'Alcance', valor: formatNumber(latest.alcance), desc: latest.periodo || 'Último período' },
-    { label: 'Impresiones', valor: formatNumber(latest.impresiones), desc: latest.periodo || 'Último período' },
-    { label: 'Consultas WhatsApp', valor: formatNumber(latest.consultas_wpp), desc: latest.periodo || 'Último período' },
+    { label: 'Inversión Meta', valor: formatCurrency(latest.inversion_meta), desc },
+    { label: 'Alcance', valor: formatNumber(latest.alcance), desc },
+    { label: 'Impresiones', valor: formatNumber(latest.impresiones), desc },
+    { label: 'Consultas WhatsApp', valor: formatNumber(latest.consultas_wpp), desc },
   ];
 }
 
@@ -212,7 +219,7 @@ export default function DashboardPage() {
                   <tbody>
                     {records.map((r, i) => (
                       <tr key={i} style={{ borderBottom: '1px solid #f0ede8' }}>
-                        <td style={{ padding: '10px 12px', color: '#1a1a1a' }}>{r.periodo}</td>
+                        <td style={{ padding: '10px 12px', color: '#1a1a1a' }}>{formatPeriodo(r.mes, r.anio)}</td>
                         <td style={{ padding: '10px 12px', textAlign: 'right', color: '#1a1a1a' }}>{formatCurrency(r.inversion_meta)}</td>
                         {isEcommerce ? (
                           <>

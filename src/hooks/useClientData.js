@@ -35,7 +35,8 @@ export function useClientData() {
           .from('performance_records')
           .select('*')
           .eq('client_id', clientData.id)
-          .order('periodo', { ascending: false });
+          .order('anio', { ascending: false })
+          .order('mes', { ascending: false });
 
         if (recordsError) throw recordsError;
         setRecords(recordsData || []);
