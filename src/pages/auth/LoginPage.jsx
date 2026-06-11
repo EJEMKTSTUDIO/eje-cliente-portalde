@@ -69,6 +69,7 @@ export default function LoginPage() {
       <div style={{
         display: 'flex',
         alignItems: 'flex-start',
+        justifyContent: 'space-between',
         gap: '24px',
         position: 'relative',
         zIndex: 1,
@@ -115,9 +116,8 @@ export default function LoginPage() {
 
         {/* Columna derecha — card formulario */}
         <div style={{
-          width: '260px',
+          width: '280px',
           flexShrink: 0,
-          marginRight: '40px',
           background: '#fff',
           borderRadius: '16px',
           border: '1px solid #ebe8e2',
