@@ -22,7 +22,7 @@ export default function ContratoPage() {
     if (!session?.user?.id) { setLoading(false); return; }
     supabase
       .from('clients')
-      .select('nombre, tipo_cliente, modelo_cobro, fecha_inicio, contrato_url')
+      .select('nombre, tipo_cliente, modelo_honorarios, fecha_inicio, contrato_url')
       .eq('auth_user_id', session.user.id)
       .single()
       .then(({ data, error: err }) => {
@@ -112,9 +112,9 @@ export default function ContratoPage() {
 
             {/* Fields grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px 32px', marginBottom: '32px' }}>
-              <Field label="Tipo de servicio"  value={client.tipo_cliente} />
-              <Field label="Modelo de cobro"   value={client.modelo_cobro} />
-              <Field label="Fecha de inicio"   value={formatFecha(client.fecha_inicio)} />
+              <Field label="Tipo de servicio"    value={client.tipo_cliente} />
+              <Field label="Modelo honorarios"  value={client.modelo_honorarios} />
+              <Field label="Fecha de inicio"    value={formatFecha(client.fecha_inicio)} />
             </div>
 
             <div style={{ borderTop: '1px solid #f0ede8', marginBottom: '24px' }} />
