@@ -115,12 +115,13 @@ export default function LoginPage() {
 
         {/* Columna derecha — card formulario */}
         <div style={{
-          width: '240px',
+          width: '260px',
           flexShrink: 0,
+          marginRight: '40px',
           background: '#fff',
           borderRadius: '16px',
           border: '1px solid #ebe8e2',
-          padding: '28px 24px',
+          padding: '28px',
           boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
         }}>
 
@@ -210,7 +211,7 @@ export default function LoginPage() {
       </div>
 
       {/* ── Parte inferior ── */}
-      <div style={{ marginTop: 'auto', paddingTop: '48px', position: 'relative', zIndex: 1 }}>
+      <div style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Métricas */}
         <div style={{
@@ -224,9 +225,9 @@ export default function LoginPage() {
               background: '#fff',
               border: '1px solid #ebe8e2',
               borderRadius: '12px',
-              padding: '16px 14px',
+              padding: '12px',
             }}>
-              <div style={{ fontSize: '24px', fontWeight: '800', color: '#1a1a1a' }}>{m.valor}</div>
+              <div style={{ fontSize: '22px', fontWeight: '800', color: '#1a1a1a' }}>{m.valor}</div>
               <div style={{ fontSize: '9px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#DC5F1E', marginTop: '2px' }}>{m.label}</div>
             </div>
           ))}
